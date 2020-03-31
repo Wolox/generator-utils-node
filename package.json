@@ -1,0 +1,78 @@
+{
+  "name": "generator-utils-node",
+  "version": "0.0.1",
+  "description": "Yeoman generator with some utils for NodeJS projects",
+  "engines": {
+    "npm": ">= 4.0.0",
+    "node": "12.16.1"
+  },
+  "files": [
+    "generators"
+  ],
+  "scripts": {
+    "test": "jest --silent",
+    "eslint-check": "eslint --print-config .eslintrc.js",
+    "lint": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\" ",
+    "lint-diff": "git diff --name-only --cached --relative | grep \\\\.js$ | xargs eslint",
+    "lint-fix": "eslint --ignore-pattern 'generators/app/templates/' \"**/*.js\" --fix",
+    "outdated": "npm outdated --depth 0",
+    "pretest": "npm run lint",
+    "prestart": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wolox/generator-utils-node.git"
+  },
+  "author": "Wolox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wolox/generator-utils-node/issues",
+    "email": "tls@wolox.com.ar"
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "",
+  "dependencies": {
+    "cfonts": "^2.7.0",
+    "chalk": "^3.0.0",
+    "yeoman-generator": "^4.5.0",
+    "yosay": "^2.0.1"
+  },
+  "devDependencies": {
+    "ajv": "^5.5.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-config-wolox": "^4.0.0",
+    "eslint-config-wolox-node": "^3.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "jest-json-schema": "^2.1.0",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^2.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.spec.js?(x)"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/generators/templates"
+    ],
+    "clearMocks": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  }
+}
