@@ -1,5 +1,5 @@
 {
-  "name": "generator-utils-node",
+  "name": "@wolox/generator-utils-node",
   "version": "0.0.1",
   "description": "Yeoman generator with some utils for NodeJS projects",
   "engines": {
